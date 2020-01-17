@@ -1,0 +1,47 @@
+{{!-- listing product by user --}}
+	<div>
+
+		<h4>Enter the details of the product you want to list:</h4>
+
+		<form class="create-form" id="addProductFormId" method="post" action="/api/posts" >
+
+			<div class="form-group">
+				<label for="productName">Name of the product:</label>
+				<input type="text" id="productName" name="productName">
+			</div>
+			<div class="form-group">
+				<label for="productDescription">Description of the product:</label>
+				<textarea id="productDescription" name="productDescription" rows="2" cols="40"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="picurl">Enter the picture url:</label>
+				<textarea id="picurl" name="picurl" rows="2" cols="40"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="category">Category:</label>
+				<textarea id="category" name="category" rows="1" cols="20"></textarea>
+			</div>
+
+			<button type="submit">Add the product</button>
+		</form>
+
+	</div>
+<script>
+    /*$('form#addProductFormId').submit(function(e){
+        console.log("====came to submit form====");
+        e.preventDefault();
+        
+        var form = $(this);
+
+        var obj = $("#addProductFormId").serializeArray()({
+            // options here 
+        });
+        console.log("---------> "+obj)
+        //var productFormData = utils.serializeToJSON(form);
+        //var xhrData = _.pick(productFormData, 'productName', 'productDescription', 'picurl', 'category');
+        console.log(xhrData);
+        //api.post('/videos', xhrData, function(response){
+        //alert('Video has been added!');
+        });*/
+    
+</script>
