@@ -79,7 +79,7 @@ module.exports = function(app) {
 
   app.post('/api/createDummyData', (req,res)=>{
     for(let i = 0; i <10; i++){
-      db.kitchenitems.create({category: categories[i%categories.length], productName:`Dummy${i}`, picurl:"www.google.com", productDescription: `Description${i}`, quantity: Math.floor(Math.random()*i*10 )}).then(data=>{console.log(data)})
+      db.kitchenitems.create({category: categories[i], name:`Dummy${i}`, picurl:"www.google.com",description: `Description${i}`, itemprice: 50, quantity: Math.floor(Math.random()*i*10 )}).then(data=>{console.log(data)})
     }
   })
 
@@ -118,8 +118,9 @@ app.get("/", function(req, res) {
 app.get("/category/:catName", function(req, res) {
   console.log("/ root with parameter loaded");
   console.log( "category==>"+req.params.catName);
-  db.kitchenitems.findAll({where:{category: req.params.catName}}).then(data=> {
-    console.log("##### data from server: ", data[0].dataValues);    
+  db.kitchenitems.findAll({where: {category: req.params.catName}}).then(data=> {
+    // console.log("##### data from server: ", data[0].dataValues);
+    console.log(data);    
     res.render("appliancescontent", {kitchenitems: data} );
   }).catch(err=>console.log(err))
   ;
