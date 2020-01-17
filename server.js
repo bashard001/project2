@@ -1,8 +1,8 @@
+
 // Requiring necessary npm packages
+var exphbs = require("express-handlebars");
 var express = require("express");
-
-// Requiring passport as we've configured it
-
+var mysql = require("mysql");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -13,12 +13,22 @@ var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-// We need to use sessions to keep track of our user's login status
+
+
+app.engine("handlebars", exphbs({
+  defaultLayout: "main" ,
+  helpers: {
+   toJSON : function(object) {
+     return JSON.stringify(object);
+   }
+ }
+ }));
+app.set("view engine", "handlebars");
 
 
 // Requiring our routes
-// require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
+require("./routes/items-api-routes.js")(app);
+// require("./routes/items-api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {

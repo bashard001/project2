@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const kitckenitems = sequelize.define('kitchenitem', {
+  const kitckenitems = sequelize.define('kitchenitems', {
     category: DataTypes.STRING,
-    name: DataTypes.STRING,
+    productName: DataTypes.STRING,
     picurl: DataTypes.STRING,
-    description: DataTypes.STRING,
+    productDescription: DataTypes.STRING,
     quantity: DataTypes.INTEGER
 
   }, {});
