@@ -1,0 +1,26 @@
+/* .bg {
+    background-image: url(/assets/css/whiteKitchen.jpg);
+} */
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  background-image: url("/assets/css/whiteKitchen.jpg");
+  height: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar {
+  background-color:#808080;
+}
+
+.navbar-toggler {
+  background-color: blue;
+
+}
