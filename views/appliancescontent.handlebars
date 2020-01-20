@@ -14,8 +14,17 @@
       </div>
       <p><span>Description:</span> {{this.dataValues.description}}</p>
       <img src="/assets/pics/{{this.dataValues.picurl}}" alt="Product image" height="200" width="200">
-      {{!-- <a class="btn" href="/buy/{{this.dataValues.id}}" style="background-color: rgb(236, 16, 27);">Buy Now</a> --}}
-      <a class="btn" href="/buy/{{this.dataValues.id}}" style="background-color: rgb(236, 16, 27);">Buy Now</a>
+
+      <a class="btn addToCartAnchor" href="/addToCart/{{this.dataValues.id}}/{{this.dataValues.quantity}}" 
+      style="background-color: rgb(236, 16, 27);" 
+      id="addToCartAnchor" prodName="{{this.dataValues.name}}">Add to cart</a>
+
+      <!--a class="btn addToCartAnchor"  href="javascript:" style="background-color: rgb(236, 16, 27);" 
+       id="addToCartAnchor" prodId="{{this.dataValues.id}}">Add t/o cart</a -->
+
+
+
+      
     </div>
   </div>
 

@@ -42,15 +42,35 @@ app.get("/category/:catName", function(req, res) {
   ;
 });
 
-app.get("/buy/:id", function(req, res) {
+app.get("/addToCart/:id/:quantity", function(req, res) {
     console.log("buy functionality is been done");
-    // reduce the content and database actions here. ...
+    console.log( "id==>"+req.params.id);
+    console.log( "quantity==>"+req.params.quantity);
+
+    var newquantity = req.params.quantity-1;
+    var newItem = {
+      quantity:newquantity
+    };
+
+    db.kitchenitems.update(newItem, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data){
+      console.log(data);
+    });
+
+    console.log("buy functionality is been done");
+    
+    // rounte to cart page
     db.kitchenitems.findAll({where: {id: req.params.id}}).then(data=> {
-      console.log("data from buy button: ----+--->" + data);    
+      console.log("data from buy button: ----+--->" + JSON.stringify(data));   
       res.render("cart", {kitchenitems: data} );
-    }).catch(err=>console.log(err))
-    ;
+    }).catch(err=>console.log(err)); 
+
+    
 });
+
 
 
 // All inactive routes
