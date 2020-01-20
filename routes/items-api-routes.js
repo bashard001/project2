@@ -2,9 +2,88 @@
 var db = require("../models");
 
 var categories = ["cookware", "misc", "small appliances"]
-// Routes
+// All acitive routes
 // =============================================================
 module.exports = function(app) {
+
+  app.post('/api/additem', (req,res)=>{
+    console.log("/api/additem method got invoked");
+    var myJson = {"category":"", "name":"", "picurl":"", "description":"", "itemprice":"",  "quantity":"" };
+    myJson.category = req.body.category;
+    myJson.name = req.body.name;
+    myJson.picurl = req.body.picurl;
+    myJson.description = req.body.description;
+    myJson.itemprice = req.body.itemprice;
+    myJson.quantity = req.body.quantity;
+
+    console.log(JSON.stringify(myJson));
+
+    db.kitchenitems.create(myJson).then(data=>{console.log(data)})
+
+    res.render("addProduct");
+
+  });
+
+// Serve index.handlebars to the root route.
+app.get("/", function(req, res) {
+  console.log("/ root loaded");
+  res.render("home");
+});
+
+// Serve index.handlebars to the root route.
+app.get("/category/:catName", function(req, res) {
+  console.log("/ root with parameter loaded");
+  console.log( "category==>"+req.params.catName);
+  db.kitchenitems.findAll({where: {category: req.params.catName}}).then(data=> {
+    // console.log("##### data from server: ", data[0].dataValues);
+    console.log(data);    
+    res.render("appliancescontent", {kitchenitems: data} );
+  }).catch(err=>console.log(err))
+  ;
+});
+
+app.get("/addToCart/:id/:quantity", function(req, res) {
+    console.log("buy functionality is been done");
+    console.log( "id==>"+req.params.id);
+    console.log( "quantity==>"+req.params.quantity);
+
+    var newquantity = req.params.quantity-1;
+    var newItem = {
+      quantity:newquantity
+    };
+
+    db.kitchenitems.update(newItem, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data){
+      console.log(data);
+    });
+
+    console.log("buy functionality is been done");
+    
+    // rounte to cart page
+    db.kitchenitems.findAll({where: {id: req.params.id}}).then(data=> {
+      console.log("data from buy button: ----+--->" + JSON.stringify(data));   
+      res.render("cart", {kitchenitems: data} );
+    }).catch(err=>console.log(err)); 
+
+    
+});
+
+
+
+// All inactive routes
+// =============================================================
+
+
+
+app.get("/addproduct", function(req, res) {
+  console.log("adding product to the db functionality is been done");
+  res.render("addProduct");
+});
+
+
 
   // GET route for getting all of the posts
   app.get("/api/items/:category", function(req, res) {
@@ -107,36 +186,6 @@ module.exports = function(app) {
     });
   });
 
-
-// Serve index.handlebars to the root route.
-app.get("/", function(req, res) {
-  console.log("/ root loaded");
-  res.render("home");
-});
-
-// Serve index.handlebars to the root route.
-app.get("/category/:catName", function(req, res) {
-  console.log("/ root with parameter loaded");
-  console.log( "category==>"+req.params.catName);
-  db.kitchenitems.findAll({where: {category: req.params.catName}}).then(data=> {
-    // console.log("##### data from server: ", data[0].dataValues);
-    console.log(data);    
-    res.render("appliancescontent", {kitchenitems: data} );
-  }).catch(err=>console.log(err))
-  ;
-});
-
-app.get("/buy/:id", function(req, res) {
-    console.log("buy functionality is been done");
-    // reduce the content and database actions here. ...
-    res.render("home");
-});
-
-
-app.get("/addproduct", function(req, res) {
-  console.log("adding product to the db functionality is been done");
-  res.render("addProduct");
-});
 
 };
 

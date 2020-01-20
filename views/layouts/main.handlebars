@@ -2,76 +2,188 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>KitchiKart</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="/assets/css/style.css" type="text/css">
-	<link rel="stylesheet" href="/assets/css/js/style.css" type="text/css">
-	<script src="/assets/js/jquery.js"></script>
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="/assets/js/kitchikart.js"></script>
+  <meta charset="UTF-8">
+  <title>KitchiKart</title>
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <script src="/assets/js/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/assets/js/kitchikart.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  {{!-- <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .bg {
+      background-image: url("/assets/css/whiteKitchen.jpg");
+      height: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .navbar {
+      background-color:#808080;
+    }
+
+    .navbar-toggler {
+      background-color: blue;
+
+    }
+  </style> --}}
+  <script>
+    $(window).load(function () {
+      $("#myModal").modal('show');
+    });
+  </script>
 </head>
 
 <body>
-	<!-- navigation bar -->
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-			<!-- homepage routing  -->
-              <a class="nav-link" href="http://localhost:8080">KitchiKart - Home </a>
-            </li>
-			<!-- catagory dropdown menu  -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Buy Product
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="http://localhost:8080/smallappliances">Appliances</a>
-                <a class="dropdown-item" href="http://localhost:8080/tableware">tableware</a>
-                <a class="dropdown-item" href="http://localhost:8080/category/cookware">cookware</a>
-                <a class="dropdown-item" href="http://localhost:8080/category/kitchenutensils">table utensile</a>
-                <a class="dropdown-item" href="http://localhost:8080/category/misc">misc</a>                
-              </div>
-            </li>
-			<!-- adding new product to db  -->
-            <li class="nav-item">
-                <a class="nav-link" href="/addProduct">Add Product</a>
-              </li>
-          </ul>
+
+  <!-- on load modal display -->
+  {{!-- <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Subscribe our Newsletter</h4>
         </div>
-      </nav>
-
-	{{!-- decorative image below nav bar --}}
-	<div class="bg">
-	</div>
-	
-	
-
-	{{{ body }}}
-
-
-	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-	<script>"https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js"</script>
+        <div class="modal-body">
+          <p>Subscribe to our mailing list to get the latest updates</p>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email Address">
+            </div>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> --}}
 
 
-	<!-- footer -->
-	<footer class="footer mt-auto py-3 px-3" style="background: black; color: white">
-		<div style="text-align: center;">
-			<span class="text-muted">©&nbsp;KichiKart 2020. </span>
-		</div>
-	</footer>
+  <!-- navigation bar -->
+
+  <nav class="navbar navbar-expand-lg ">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span><i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active" style="margin-left: 100px;">
+          <!-- homepage routing  -->
+          <a class="nav-link" href="http://localhost:8080"
+            style="color:black; font-size:20px;">KitchiKart</a>
+        </li>
+        <!-- catagory dropdown menu  -->
+        <li class="nav-item dropdown" style="margin-left: 100px;">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color:black; font-size:20px;">
+            Buy Product
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://localhost:8080/category/smallappliances"
+              style="color: rgb(236, 16, 27);">Appliances</a>
+            <a class="dropdown-item" href="http://localhost:8080/category/tableware"
+              style="color: rgb(236, 16, 27);">tableware</a>
+            <a class="dropdown-item" href="http://localhost:8080/category/cookware"
+              style="color: rgb(236, 16, 27);">cookware</a>
+            <a class="dropdown-item" href="http://localhost:8080/category/kitchenutensils"
+              style="color: rgb(236, 16, 27);">table utensile</a>
+            <a class="dropdown-item" href="http://localhost:8080/category/misc"
+              style="color: rgb(236, 16, 27);">misc</a>
+          </div>
+        </li>
+        <!-- adding new product to db  -->
+        <li class="nav-item" style="margin-left: 100px;">
+          <a class="nav-link" href="/addProduct" style="color:black; font-size:20px;">Add Product</a>
+        </li>
+      </ul>
+
+      <!-- Modal link-->
+      <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter" style="color:black; font-size:20px;">
+        Kitchen services
+      </button>
+      
+      <!-- Modal box-->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">KITCHEN SERVICES</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">Whether you are looking for an expert to help setting up your new kitchen or a new add on,
+              KitchiKart is equipped to handle every major and minor project in your kitchen. After all, the kitchen is the
+              heart of the household. Our dependable and experienced services will get the job done right and on time so that
+              your family can get back to making memories.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- cart -->
+      
+        <a class="nav-link" href="/cart" style="color:black; font-size:20px;">Cart</a>
+     
+      
+      </div>
+  </nav>
+<br>
+<br>
+  {{!-- decorative image below nav bar --}}
+  <div class="bg">
+
+
+  </div>
+
+
+
+  {{{ body }}}
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+
+  <script src="/assets/js/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="/assets/js/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="/assets/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>"https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js"</script>
+
+
+  <!-- footer -->
+  <footer class="footer mt-auto py-3 px-3" style="background: black; color: white">
+    <div style="text-align: center;">
+      <span class="text-muted">©&nbsp;KichiKart 2020. </span>
+    </div>
+  </footer>
 
 </body>
 

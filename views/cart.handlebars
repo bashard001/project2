@@ -1,0 +1,41 @@
+
+<div id="mycartItems">
+
+</div>
+
+<script>
+cart = JSON.parse(localStorage.getItem('myCart'));
+  console.log("kitchikar.js file loaded in carthandler "+ JSON.stringify(cart));
+  
+  
+  var cartHTML = "<br> <h3> The following items are added to the cart </h3>";
+  Object.keys(cart).forEach(function(key) {
+  
+    console.table('Key : ' + key + ', Value : ' + cart[key]);
+    cartHTML += '</br>'
+    cartHTML += '<h5 class="card-header text-center" style="width: 80vw" > Item : ' + key + '<br> Quantity : ' + cart[key] + ' <br></h5>';
+  })
+  console.log("cartHTMLcartHTMLcartHTML: "+cartHTML);
+  document.getElementById("mycartItems").innerHTML = cartHTML;
+
+  </script>
+
+  {{#each kitchenitems}}
+  {{!--kitchenitems.id--}}
+  {{!--toJSON kitchenitems--}}
+  
+    {{!-- <h5 class="card-header" ></h5> --}}
+
+{{!-- <h5 class="card-header" style="background-color: #808080;">{{this.dataValues.name}}</h5>     --}}
+    {{!-- <div class="card-body">
+     
+      <div class="col-md-4">  Category: {{this.dataValues.category}}</div> 
+      <div class="col-md-4">  Item Price: {{this.dataValues.itemPrice}}</div>
+  
+
+      --}}
+    </div>
+
+
+
+  {{/each}}

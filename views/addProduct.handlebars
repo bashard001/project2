@@ -1,40 +1,75 @@
 {{!-- listing product by user --}}
-	<div>
+<div style="margin-left: 25vw; margin-right: 25vw; margin-top: 20px">
 
-		<h4>Enter the details of the product you want to list:</h4>
+	<h4 style="text-align:center">Enter the details of the product you want to list:</h4>
 
-		<form class="create-form" id="addProductFormId" method="post" action="/api/posts" >
-
-			<div class="form-group">
-				<label for="productName">Name of the product:</label>
-				<input type="text" id="productName" name="productName">
+	<form class="create-form" id="addProductFormId" method="post" action="/api/additem">
+		<div class="row justify-content-center">
+			<div class="col">
+				<div class="form-group">
+					<label for="name">Name of the product</label><br>
+					{{!-- <input type="text" id="name" name="name"> --}}
+					<textarea id="name" name="name" rows="1" cols="40"></textarea>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="productDescription">Description of the product:</label>
-				<textarea id="productDescription" name="productDescription" rows="2" cols="40"></textarea>
+			<div class="col">
+				<div class="form-group">
+					<label for="category">Category</label><br>
+					<textarea id="category" name="category" rows="1" cols="40"></textarea>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="picurl">Enter the picture url:</label>
-				<textarea id="picurl" name="picurl" rows="2" cols="40"></textarea>
-			</div>
-			<div class="form-group">
-				<label for="category">Category:</label>
-				<textarea id="category" name="category" rows="1" cols="20"></textarea>
-			</div>
+		</div>
 
-			<button type="submit">Add the product</button>
-		</form>
-
+		<div class="row justify-content-center">
+			<div class="col">
+				<div class="form-group">
+					<label for="quantity">quantity</label><br>
+					<textarea id="quantity" name="quantity" rows="1" cols="40"></textarea>
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label for="itemPrice">itemPrice</label><br>
+					<textarea id="itemPrice" name="itemPrice" rows="1" cols="40"></textarea>
+				</div>
+			</div>
+		</div>
+<div class="row justify-content-center">
+			<div class="form-group">
+					<label for="description">Description of the product</label><br>
+					<textarea id="description" name="description" rows="4" cols="60"></textarea>
+				</div>
+				</div>
+	<div class="row justify-content-center">
+				<div class="form-group">
+					<label for="picurl">Enter the picture url</label><br>
+					<textarea id="picurl" name="picurl" rows="2" cols="60"></textarea>
+				</div>
 	</div>
+			
+		
+
+		<div class="row justify-content-center">
+			<button class="btn" type="submit" style="background-color: red;">Add the product</button>
+		</div>
+		
+		<br><br>
+	</form>
+</div>
+
+
+
+
+
 <script>
     /*$('form#addProductFormId').submit(function(e){
         console.log("====came to submit form====");
         e.preventDefault();
-        
+
         var form = $(this);
 
         var obj = $("#addProductFormId").serializeArray()({
-            // options here 
+            // options here
         });
         console.log("---------> "+obj)
         //var productFormData = utils.serializeToJSON(form);
@@ -43,5 +78,5 @@
         //api.post('/videos', xhrData, function(response){
         //alert('Video has been added!');
         });*/
-    
+
 </script>
